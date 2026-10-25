@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+.env
+*.swp
+artifacts/
+.cache/
+
+# Salidas de ejecución del CLI
+scout-result.json
+*.brief.local.json

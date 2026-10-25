@@ -1,0 +1,119 @@
+{
+  "synthetic": true,
+  "description": "Datos ficticios para probar el pipeline de ARI Scout sobre el cluster `empanada machine` en en-US. Los volúmenes, posiciones y dominios son inventados y no representan observaciones reales: todos los dominios usan el TLD reservado `.example` (RFC 2606). No usar estas cifras como evidencia de demanda.",
+  "request": {
+    "request_id": "11111111-1111-4111-8111-111111111111",
+    "trace_id": "22222222-2222-4222-8222-222222222222",
+    "topic": "empanada machine",
+    "locale": "en-US",
+    "location": "United States",
+    "site_url": "https://maquiempanadas.example",
+    "seed_keywords": ["empanada machine", "industrial empanada machine"],
+    "target_audience": "US food manufacturers and commercial kitchens buying forming equipment",
+    "conversion_goal": "request a quote",
+    "limits": {
+      "max_keywords": 50,
+      "max_serp_queries": 10,
+      "max_competitor_pages": 5,
+      "provider_budget_usd": 1
+    }
+  },
+  "site_queries": [
+    {
+      "term": "empanada maker machine",
+      "url": "https://maquiempanadas.example/en/empanada-maker",
+      "impressions": 310,
+      "position": 17.4,
+      "observed_at": "2026-10-20T00:00:00Z"
+    }
+  ],
+  "keywords": [
+    { "term": "empanada machine", "volume": 520, "competition": 48, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "EMPANADA MACHINE ", "volume": 520, "competition": 48, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada maker machine", "volume": 410, "competition": 52, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "industrial empanada machine", "volume": 310, "competition": 42, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "best empanada machine", "volume": 300, "competition": 66, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "commercial empanada machine", "volume": 260, "competition": 45, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "automatic empanada machine", "volume": 240, "competition": 39, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "how to use an empanada machine", "volume": 210, "competition": null, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine for sale", "volume": 190, "competition": 55, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "what is an empanada machine", "volume": 180, "competition": 72, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine price", "volume": 170, "competition": 58, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine manufacturers", "volume": 160, "competition": 44, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada folding machine", "volume": 150, "competition": 36, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "buy empanada machine", "volume": 140, "competition": 61, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada production line", "volume": 140, "competition": 38, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada forming machine", "volume": 130, "competition": 35, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "arepa and empanada machine", "volume": 125, "competition": 34, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada dough machine", "volume": 120, "competition": 31, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "small empanada machine", "volume": 110, "competition": 29, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine reviews", "volume": 105, "competition": 63, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada sealing machine", "volume": 100, "competition": 37, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine cost", "volume": 95, "competition": 50, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "empanada machine vs empanada press", "volume": 90, "competition": 33, "observed_at": "2026-10-20T00:00:00Z" },
+    { "term": "semi automatic empanada machine", "volume": 85, "competition": 28, "observed_at": "2026-10-20T00:00:00Z" }
+  ],
+  "serps": [
+    {
+      "keyword": "empanada machine",
+      "observed_at": "2026-10-20T01:00:00Z",
+      "features": ["shopping", "people_also_ask"],
+      "results": [
+        { "position": 1, "url": "https://competitor-a.example/empanada-machines", "title": "Empanada Machines" },
+        { "position": 2, "url": "https://maquiempanadas.example/en/empanada-machine", "title": "Empanada Machine" },
+        { "position": 3, "url": "https://competitor-b.example/commercial-empanada-equipment", "title": "Commercial Empanada Equipment" },
+        { "position": 4, "url": "https://competitor-c.example/empanada-formers", "title": "Empanada Formers" }
+      ]
+    },
+    {
+      "keyword": "industrial empanada machine",
+      "observed_at": "2026-10-20T01:05:00Z",
+      "features": ["shopping"],
+      "results": [
+        { "position": 1, "url": "https://competitor-a.example/empanada-machines", "title": "Empanada Machines" },
+        { "position": 2, "url": "https://competitor-d.example/industrial-lines", "title": "Industrial Production Lines" },
+        { "position": 3, "url": "https://competitor-b.example/commercial-empanada-equipment", "title": "Commercial Empanada Equipment" }
+      ]
+    },
+    {
+      "keyword": "best empanada machine",
+      "observed_at": "2026-10-20T01:10:00Z",
+      "features": ["featured_snippet", "people_also_ask"],
+      "results": [
+        { "position": 1, "url": "https://competitor-e.example/best-empanada-machines", "title": "Best Empanada Machines" },
+        { "position": 2, "url": "https://competitor-a.example/empanada-machines", "title": "Empanada Machines" },
+        { "position": 3, "url": "https://competitor-f.example/buying-guide", "title": "Empanada Machine Buying Guide" }
+      ]
+    },
+    {
+      "keyword": "empanada machine for sale",
+      "observed_at": "2026-10-20T01:15:00Z",
+      "features": ["shopping"],
+      "results": [
+        { "position": 1, "url": "https://competitor-g.example/used-empanada-machines", "title": "Used Empanada Machines" },
+        { "position": 2, "url": "https://competitor-c.example/empanada-formers", "title": "Empanada Formers" },
+        { "position": 3, "url": "https://competitor-h.example/listings", "title": "Equipment Listings" }
+      ]
+    },
+    {
+      "keyword": "empanada maker machine",
+      "observed_at": "2026-10-20T01:20:00Z",
+      "features": [],
+      "results": [
+        { "position": 1, "url": "https://competitor-b.example/empanada-makers", "title": "Empanada Makers" },
+        { "position": 2, "url": "https://maquiempanadas.example/en/empanada-maker", "title": "Empanada Maker" },
+        { "position": 3, "url": "https://competitor-i.example/small-batch", "title": "Small Batch Equipment" }
+      ]
+    },
+    {
+      "keyword": "how to use an empanada machine",
+      "observed_at": "2026-10-20T01:25:00Z",
+      "features": ["featured_snippet", "people_also_ask"],
+      "results": [
+        { "position": 1, "url": "https://competitor-f.example/how-to-guide", "title": "How to Use an Empanada Machine" },
+        { "position": 2, "url": "https://competitor-e.example/tutorials", "title": "Equipment Tutorials" },
+        { "position": 3, "url": "https://competitor-j.example/videos", "title": "Machine Videos" }
+      ]
+    }
+  ]
+}

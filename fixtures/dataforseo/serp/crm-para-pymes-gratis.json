@@ -1,0 +1,522 @@
+{
+  "recorded_from": "respuesta real de DataForSEO, saneada por scripts/record-dataforseo-fixtures.mjs",
+  "recorded_at": "2026-10-24T22:50:35.355Z",
+  "data": {
+    "version": "0.1.20261022",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "3.9660 sec.",
+    "cost": 0.002,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+      {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "status_code": 20000,
+        "status_message": "Ok.",
+        "time": "3.8843 sec.",
+        "cost": 0.002,
+        "result_count": 1,
+        "path": [
+          "v3",
+          "serp",
+          "google",
+          "organic",
+          "live",
+          "advanced"
+        ],
+        "data": {
+          "api": "serp",
+          "function": "live",
+          "se": "google",
+          "se_type": "organic",
+          "keyword": "crm para pymes gratis",
+          "location_name": "Colombia",
+          "language_code": "es",
+          "device": "desktop",
+          "depth": 10,
+          "os": "windows"
+        },
+        "result": [
+          {
+            "keyword": "crm para pymes gratis",
+            "type": "organic",
+            "se_domain": "google.com",
+            "location_code": 2170,
+            "language_code": "es",
+            "check_url": "https://www.google.com/search?q=crm%20para%20pymes%20gratis&hl=es&gl=CO&ie=UTF-8&uule=w+CAIQIFISCaOUFa46pBWOEUCj8u8Emg2a",
+            "datetime": "2026-10-24 22:50:38 +00:00",
+            "spell": null,
+            "refinement_chips": null,
+            "item_types": [
+              "ai_overview",
+              "organic",
+              "video",
+              "people_also_ask",
+              "related_searches"
+            ],
+            "se_results_count": 113,
+            "pages_count": 1,
+            "items_count": 12,
+            "items": [
+              {
+                "type": "ai_overview",
+                "rank_group": 1,
+                "rank_absolute": 1,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]",
+                "asynchronous_ai_overview": true,
+                "markdown": null,
+                "items": null,
+                "references": null,
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 1,
+                "rank_absolute": 2,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]",
+                "domain": "www.capterra.pe",
+                "title": "Software CRM gratis - Capterra Perú 2026",
+                "url": "https://www.capterra.pe/directory/2/customer-relationship-management/pricing/free/software",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://www.capterra.pe › Inicio › Software CRM gratis",
+                "website_name": "Capterra Perú",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "Agile CRM es un paquete completo de ventas, marketing y servicios diseñado para permitir a las PYME vender y comercializar como las Fortune 500. Agile CRM es un ...",
+                "pre_snippet": null,
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "Agile CRM"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": null,
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 2,
+                "rank_absolute": 3,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]",
+                "domain": "www.getapp.cl",
+                "title": "Software CRM online gratis",
+                "url": "https://www.getapp.cl/directory/232/online-crm/pricing/free/software",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://www.getapp.cl › ... › Software CRM online gratis",
+                "website_name": "GetApp Chile",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "Herramienta de colaboración de ventas con CRM para pequeñas empresas. Nutshell CRM es una herramienta de ventas poderosa, flexible, fácil de usar y atractiva.",
+                "pre_snippet": null,
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "Nutshell CRM"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": null,
+                "rectangle": null
+              },
+              {
+                "type": "video",
+                "rank_group": 1,
+                "rank_absolute": 4,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[6]/div[1]",
+                "items": [
+                  {
+                    "type": "video_element",
+                    "source": "YouTube · Comparapps",
+                    "title": "BEST FREE CRM FOR SMALL BUSINESSES (2025)",
+                    "timestamp": "2025-04-10 00:00:00 +00:00",
+                    "url": "https://www.youtube.com/watch?v=2KZOa2TQUhg"
+                  },
+                  {
+                    "type": "video_element",
+                    "source": "YouTube · Comparapps",
+                    "title": "5 Best Free CRMs",
+                    "timestamp": "2026-05-06 00:00:00 +00:00",
+                    "url": "https://www.youtube.com/watch?v=v4yaqyNKP7M"
+                  },
+                  {
+                    "type": "video_element",
+                    "source": "YouTube · Stewart Gauld - En Español",
+                    "title": "Mis 5 MEJORES Software de CRM para 2025 | CRMs Gratis vs ...",
+                    "timestamp": "2025-02-18 00:00:00 +00:00",
+                    "url": "https://www.youtube.com/watch?v=CRok3lnOxdM"
+                  }
+                ],
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 3,
+                "rank_absolute": 5,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[8]/div[1]/div[1]",
+                "domain": "www.sage.com",
+                "title": "Los 8 mejores CRM de ventas para comparar y elegir - Sage",
+                "url": "https://www.sage.com/es-es/blog/mejores-crm-ventas/",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://www.sage.com › Blog › Tecnología e Innovación",
+                "website_name": "sage.com",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "13/03/2025 — Los 8 mejores CRM de ventas para comparar y elegir · 1. Sage Sales Management · 2. Salesforce · 3. HubSpot · 4. Pipedrive · 5. Odoo · 6. Zoho CRM · 7.",
+                "pre_snippet": "03/13/2025 00:00:00",
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "1. Sage Sales Management"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": "2025-03-13 00:00:00 +00:00",
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 4,
+                "rank_absolute": 6,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[10]/div[1]/div[1]",
+                "domain": "sebastianpendino.com",
+                "title": "5 CRM Gratuitos para Pequeñas Empresas",
+                "url": "https://sebastianpendino.com/crm-gratuitos-para-pequenas-empresas/?srsltid=AYCX9vIkNIHRl8UfrS7g97u7LlZu1UP8xLDaeFyqfKGKmsOSlBjfdf0M",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://sebastianpendino.com › 🚀 Negocios Online",
+                "website_name": "Sebastián Pendino",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "11/06/2026 — El CRM gratuito de Bitrix24 es una plataforma robusta y completa para la gestión de relaciones con clientes, adecuada para pequeñas y medianas ...",
+                "pre_snippet": "06/11/2026 00:00:00",
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "El CRM gratuito de Bitrix24"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": "2026-06-11 00:00:00 +00:00",
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 5,
+                "rank_absolute": 7,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[12]/div[1]/div[1]",
+                "domain": "blog.alegra.com",
+                "title": "¿Qué es un sistema CRM y qué puede hacer por tu negocio?",
+                "url": "https://blog.alegra.com/colombia/que-es-un-crm-y-cuales-son-los-mejores-para-pymes/",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://blog.alegra.com › Administración y Finanzas",
+                "website_name": "Alegra",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "El CRM permite mover cada oportunidad entre etapas, asignar responsables y establecer fechas límite para cada acción. Para una pyme con cinco vendedores, esto ...",
+                "pre_snippet": null,
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "CRM",
+                  "para",
+                  "Para",
+                  "pyme"
+                ],
+                "links": [
+                  {
+                    "type": "link_element",
+                    "title": "¿Para qué sirve un CRM en...",
+                    "description": null,
+                    "url": "https://blog.alegra.com/colombia/que-es-un-crm-y-cuales-son-los-mejores-para-pymes/#%C2%BFpara-que-sirve-un-crm-en-una-empresa",
+                    "domain": "blog.alegra.com"
+                  },
+                  {
+                    "type": "link_element",
+                    "title": "Los mejores CRM para pymes...",
+                    "description": null,
+                    "url": "https://blog.alegra.com/colombia/que-es-un-crm-y-cuales-son-los-mejores-para-pymes/#los-mejores-crm-para-pymes-en-colombia-en-2026",
+                    "domain": "blog.alegra.com"
+                  }
+                ],
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": null,
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 6,
+                "rank_absolute": 8,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[14]/div[1]/div[1]",
+                "domain": "www.pipedrive.com",
+                "title": "Un CRM económico para pequeñas empresas",
+                "url": "https://www.pipedrive.com/es/crm-comparison/cheap-crm",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://www.pipedrive.com › cheap-crm",
+                "website_name": "Pipedrive",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "Pipedrive ofrece un período de prueba de su CRM gratis durante 14 días para que veas cómo puedes expandir tu mercado y tus sistemas con un CRM profesional.",
+                "pre_snippet": null,
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "Pipedrive ofrece un período de prueba de su CRM gratis durante 14 días"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": null,
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 7,
+                "rank_absolute": 9,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[16]/div[1]/div[1]",
+                "domain": "www.posizionate.com",
+                "title": "¿Cuál es el mejor CRM gratuito?",
+                "url": "https://www.posizionate.com/blog/cual-es-el-mejor-crm-gratuito",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://www.posizionate.com › blog › cual-es-el-mejor-...",
+                "website_name": "Posizionate",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "30/10/2025 — Descubre el mejor CRM gratuito para tu negocio: compara opciones, funciones y elige la herramienta ideal para gestionar tus clientes.",
+                "pre_snippet": "10/30/2025 00:00:00",
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "Descubre el mejor CRM gratuito para tu negocio"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": "2025-10-30 00:00:00 +00:00",
+                "rectangle": null
+              },
+              {
+                "type": "organic",
+                "rank_group": 8,
+                "rank_absolute": 10,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[18]/div[1]/div[1]",
+                "domain": "emprendepyme.net",
+                "title": "Los mejores CRM gratuitos para tu empresa | Administración",
+                "url": "https://emprendepyme.net/los-mejores-crm-gratuitos-para-tu-empresa.html",
+                "cache_url": null,
+                "related_search_url": null,
+                "breadcrumb": "https://emprendepyme.net › los-mejores-crm-gratuitos-...",
+                "website_name": "Emprende Pyme",
+                "is_image": false,
+                "is_video": false,
+                "is_featured_snippet": false,
+                "is_malicious": false,
+                "is_web_story": false,
+                "checks": null,
+                "description": "Hubspot es la primera que vamos a analizar. Suele ser una buena opción a la hora de elegir un software de CRM gratis. No tiene limitación de tiempo, aunque sí ...",
+                "pre_snippet": null,
+                "extended_snippet": null,
+                "images": null,
+                "amp_version": false,
+                "rating": null,
+                "price": null,
+                "highlighted": [
+                  "Hubspot"
+                ],
+                "links": null,
+                "faq": null,
+                "extended_people_also_search": null,
+                "about_this_result": null,
+                "related_result": null,
+                "timestamp": null,
+                "rectangle": null
+              },
+              {
+                "type": "people_also_ask",
+                "rank_group": 1,
+                "rank_absolute": 11,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]",
+                "items": [
+                  {
+                    "type": "people_also_ask_element",
+                    "title": "¿Puedes darme algunos ejemplos de CRM?",
+                    "seed_question": null,
+                    "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]",
+                    "expanded_element": [
+                      {
+                        "type": "people_also_ask_ai_overview_expanded_element",
+                        "items": null,
+                        "references": null,
+                        "asynchronous_ai_overview": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "people_also_ask_element",
+                    "title": "¿Hay algún curso gratuito de CRM disponible?",
+                    "seed_question": null,
+                    "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]",
+                    "expanded_element": [
+                      {
+                        "type": "people_also_ask_ai_overview_expanded_element",
+                        "items": null,
+                        "references": null,
+                        "asynchronous_ai_overview": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "people_also_ask_element",
+                    "title": "¿Qué es HubSpot?",
+                    "seed_question": null,
+                    "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]",
+                    "expanded_element": [
+                      {
+                        "type": "people_also_ask_ai_overview_expanded_element",
+                        "items": null,
+                        "references": null,
+                        "asynchronous_ai_overview": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "people_also_ask_element",
+                    "title": "¿Es Zoho CRM gratuito?",
+                    "seed_question": null,
+                    "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[1]/div[2]/div[1]/div[1]/div[20]/div[1]/div[1]/div[1]/div[1]/div[2]/div[4]",
+                    "expanded_element": [
+                      {
+                        "type": "people_also_ask_ai_overview_expanded_element",
+                        "items": null,
+                        "references": null,
+                        "asynchronous_ai_overview": true
+                      }
+                    ]
+                  }
+                ],
+                "rectangle": null
+              },
+              {
+                "type": "related_searches",
+                "rank_group": 1,
+                "rank_absolute": 12,
+                "page": 1,
+                "position": "left",
+                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[13]/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]",
+                "items": [
+                  "CRM gratis para WhatsApp",
+                  "Zoho CRM",
+                  "HubSpot CRM",
+                  "CRM gratuito de Google",
+                  "Crm software precio",
+                  "Bitrix24",
+                  "Pipedrive CRM"
+                ],
+                "rectangle": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "observed_at": "2026-10-24T22:50:35.355Z",
+  "reported_cost_usd": 0.002
+}

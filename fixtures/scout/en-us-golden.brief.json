@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "id": "33333333-3333-4333-8333-333333333333",
+    "contract_version": "1.0.0",
+    "trace_id": "22222222-2222-4222-8222-222222222222",
+    "created_at": "2026-10-24T12:00:00.000Z",
+    "producer": "ari-scout"
+  },
+  "status": "ready",
+  "topic": "empanada machine",
+  "locale": "en-US",
+  "search_intent": "commercial",
+  "keywords": {
+    "primary": "empanada machine",
+    "secondary": [
+      "industrial empanada machine",
+      "empanada machine for sale",
+      "best empanada machine",
+      "empanada maker machine",
+      "how to use an empanada machine"
+    ],
+    "clusters": [
+      {
+        "name": "empanada-machine",
+        "terms": [
+          "empanada machine",
+          "empanada machine for sale",
+          "best empanada machine",
+          "empanada maker machine",
+          "how to use an empanada machine"
+        ]
+      },
+      {
+        "name": "empanada-industrial-machine",
+        "terms": [
+          "industrial empanada machine"
+        ]
+      }
+    ]
+  },
+  "recommended_page": {
+    "page_type": "landing-page",
+    "working_title": "Empanada Machine",
+    "slug": "empanada-machine",
+    "outline": [
+      "Need and context",
+      "How to choose",
+      "Recommended solution",
+      "Frequently asked questions"
+    ],
+    "conversion_goal": "request a quote",
+    "internal_link_targets": [
+      "https://maquiempanadas.example/en/empanada-maker"
+    ]
+  },
+  "competitor_urls": [
+    "https://competitor-a.example/empanada-machines",
+    "https://competitor-b.example/commercial-empanada-equipment",
+    "https://competitor-c.example/empanada-formers",
+    "https://competitor-d.example/industrial-lines",
+    "https://competitor-g.example/used-empanada-machines",
+    "https://competitor-h.example/listings",
+    "https://competitor-e.example/best-empanada-machines",
+    "https://competitor-f.example/buying-guide",
+    "https://competitor-b.example/empanada-makers",
+    "https://competitor-i.example/small-batch"
+  ],
+  "evidence": [
+    {
+      "source": "fixture:site_queries:src-site-9c0978bdfc3f",
+      "url": "https://maquiempanadas.example/en/empanada-maker",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-638c7937abcb",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-0c2ff9d81fc2",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-ff1d94e3ea2a",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-14dc0b4bc47f",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-fb8852ec54b8",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-ad1550ec23a5",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-272eb3bc987b",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-f75eea8f8e17",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-99baf9311a18",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-440c1015dd20",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-d36c68d348fd",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-c9a6c21404d0",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-42cbf8cdf565",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-b9412e779ee6",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-5523576b0424",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-65902b89fe46",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-859ffb5a0252",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-05c274027f9a",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-03e7a6cafb28",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-bdb4d104b8f0",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-268ab50cc028",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-e357f332c910",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-f326903475c4",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:keyword_expand:src-keyword-db31e6464a39",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "note": "Synthetic fixture; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-8a77204af0a1",
+      "observed_at": "2026-10-20T01:00:00Z",
+      "note": "Synthetic fixture for empanada machine; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-0374cb14b96d",
+      "observed_at": "2026-10-20T01:05:00Z",
+      "note": "Synthetic fixture for industrial empanada machine; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-4012dde33a43",
+      "observed_at": "2026-10-20T01:10:00Z",
+      "note": "Synthetic fixture for best empanada machine; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-7f125100c26a",
+      "observed_at": "2026-10-20T01:15:00Z",
+      "note": "Synthetic fixture for empanada machine for sale; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-ab6212b289c6",
+      "observed_at": "2026-10-20T01:20:00Z",
+      "note": "Synthetic fixture for empanada maker machine; not a real observation."
+    },
+    {
+      "source": "fixture:serp:src-serp-1592505c584b",
+      "observed_at": "2026-10-20T01:25:00Z",
+      "note": "Synthetic fixture for how to use an empanada machine; not a real observation."
+    }
+  ],
+  "assumptions": [
+    "Resultado generado exclusivamente con fixtures sintéticas de SPECT-001."
+  ],
+  "errors": []
+}

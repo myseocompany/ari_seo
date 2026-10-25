@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ari.dev/seo/contracts/page-artifact.schema.json",
+  "title": "PageArtifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "status", "page", "files", "checks", "errors"],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        { "$ref": "common.schema.json#/$defs/ContractMetadata" },
+        {
+          "required": ["source_id"],
+          "properties": { "producer": { "const": "ari-build" } }
+        }
+      ]
+    },
+    "status": { "type": "string", "enum": ["draft", "partial", "ready", "failed"] },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "title", "description", "indexing"],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "canonical_path": { "type": "string", "pattern": "^/" },
+        "indexing": { "type": "string", "enum": ["index", "noindex"] },
+        "structured_data": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "media_type", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "media_type": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "content": { "type": "string", "description": "Optional inline representation; storage strategy remains undecided." },
+          "uri": { "type": "string", "format": "uri" }
+        },
+        "oneOf": [
+          { "required": ["content"] },
+          { "required": ["uri"] }
+        ]
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["passed", "failed", "not_run"] },
+          "details": { "type": "string" }
+        }
+      }
+    },
+    "deviations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "errors": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ContractError" } }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "failed" } }, "required": ["status"] },
+      "then": { "properties": { "errors": { "minItems": 1 } } }
+    }
+  ]
+}

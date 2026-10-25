@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ari.dev/seo/contracts/publication-result.schema.json",
+  "title": "PublicationResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "status", "target", "checks", "errors"],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        { "$ref": "common.schema.json#/$defs/ContractMetadata" },
+        {
+          "required": ["source_id"],
+          "properties": { "producer": { "const": "ari-launch" } }
+        }
+      ]
+    },
+    "status": { "type": "string", "enum": ["pending", "validating", "published", "partial", "failed", "rolled_back"] },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "provider"],
+      "properties": {
+        "environment": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "deployment_id": { "type": "string", "minLength": 1 },
+        "published_url": { "type": "string", "format": "uri" },
+        "published_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["passed", "failed", "not_run"] },
+          "http_status": { "type": "integer", "minimum": 100, "maximum": 599 },
+          "details": { "type": "string" },
+          "checked_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempted", "succeeded"],
+      "properties": {
+        "attempted": { "type": "boolean" },
+        "succeeded": { "type": "boolean" },
+        "details": { "type": "string" }
+      }
+    },
+    "errors": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ContractError" } }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "enum": ["failed", "partial"] } }, "required": ["status"] },
+      "then": { "properties": { "errors": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "published" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "target": { "required": ["published_url", "published_at"] }
+        }
+      }
+    }
+  ]
+}

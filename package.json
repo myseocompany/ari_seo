@@ -1,0 +1,21 @@
+{
+  "name": "ari-seo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "scout": "node src/scout/cli.js",
+    "scout:dataforseo": "node --env-file=.env src/scout/dataforseo-cli.js examples/scout-request.json",
+    "scout:live": "node --env-file=.env src/scout/live-cli.js examples/scout-request.json",
+    "golden:update": "node scripts/update-golden-brief.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "fast-xml-parser": "^5.3.1"
+  }
+}

@@ -72,9 +72,32 @@ Si `search_console_site_url` no está presente, se usa `site_url`. Search Consol
 9. El suite normal no usa red ni credenciales.
 10. El brief combinado continúa validando contra `SEOBrief`.
 
-## Fuera de alcance
+## Alcance
+
+### Incluido
+
+- cliente de Search Console con paginación, ventana estable y token inyectado;
+- inventario desde `urlset` y `sitemapindex`, con límites de tamaño y sin ciclos;
+- decisión entre `build`, `update`, `merge`, `watch` y `reject`;
+- propagación de gaps de señales propias al brief;
+- enlaces internos sugeridos derivados únicamente de URLs observadas.
+
+### Fuera de alcance
 
 - Inspección individual de indexación.
 - Google Analytics.
 - Crawling/render de todas las páginas.
 - Corrección automática de canibalización.
+
+## Definition of Done
+
+- [x] cliente de Search Console con paginación y ventana estable;
+- [x] inventario desde sitemap index y urlset, acotado y sin ciclos;
+- [x] detección de `update` y de canibalización `merge`;
+- [x] gaps de señales propias propagados al brief como supuestos explícitos;
+- [x] suite por defecto sin red ni credenciales;
+- [x] criterios de aceptación 1 a 10 automatizados;
+- [ ] **fixtures grabadas de Search Console y de un sitemap real.** Los tests actuales usan envolturas escritas a mano, el mismo patrón que falló en SPECT-002. No hay grabaciones disponibles porque todavía no se ejecutó contra una propiedad autorizada;
+- [ ] **smoke test con una propiedad real autorizada** (abierto, P2 en [`tasks.md`](tasks.md)).
+
+Los dos puntos abiertos están acoplados: el smoke test es lo que producirá las grabaciones que faltan.

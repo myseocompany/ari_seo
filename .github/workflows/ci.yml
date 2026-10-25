@@ -1,0 +1,49 @@
+name: CI
+
+# El Definition of Done de SPECT-001 afirma "cero llamadas de red en CI". Este
+# workflow es lo que hace esa afirmación comprobable: antes solo existía
+# `npm test` en local, que no la demuestra.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Garantiza que el suite no pueda consumir APIs pagadas: todo cliente de
+      # red recibe su `fetchImpl` inyectado y ninguna credencial está presente,
+      # así que una llamada real fallaría en lugar de gastar presupuesto.
+      - name: Verificar ausencia de credenciales de proveedor
+        run: |
+          for name in DATAFORSEO_LOGIN DATAFORSEO_USER DATAFORSEO_PASSWORD GOOGLE_ACCESS_TOKEN APIFY_TOKEN; do
+            if [ -n "${!name:-}" ]; then
+              echo "::error::$name está definida en CI; el suite debe correr sin credenciales."
+              exit 1
+            fi
+          done
+          echo "Sin credenciales de proveedor en el entorno."
+
+      - name: Pruebas
+        run: npm test
+
+      # El brief dorado es la salida aprobada del pipeline. Si alguien cambia
+      # scoring, clustering o ensamblaje sin aprobar la nueva salida, el test de
+      # regresión ya falla; este paso además detecta que el script generador y
+      # el artefacto versionado se hayan desincronizado.
+      - name: Verificar que el brief dorado está sincronizado
+        run: |
+          npm run golden:update
+          git diff --exit-code -- fixtures/scout/en-us-golden.brief.json \
+            || { echo "::error::El brief dorado cambió sin aprobarse. Ejecuta npm run golden:update y revisa el diff."; exit 1; }

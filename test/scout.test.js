@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { validateScoutRequest, validateSeoBrief } from "../src/scout/contracts.js";
+import { classifyIntent } from "../src/scout/domain.js";
 import { FixtureResearchProvider } from "../src/scout/fixture-provider.js";
 import { runScout } from "../src/scout/run.js";
 
@@ -94,6 +95,32 @@ test("insufficient optional evidence returns partial without invented competitor
   assert.equal(result.status, "partial");
   assert.ok(result.brief.errors.length > 0);
   assert.ok(result.brief.competitor_urls.every((url) => data.serps[0].results.some((item) => item.url === url)));
+});
+
+test("intent combines term modifiers with observed SERP features", () => {
+  // Un modificador explícito del término decide por sí solo.
+  assert.equal(classifyIntent("buy empanada machine"), "transactional");
+  assert.equal(classifyIntent("best empanada machine"), "commercial");
+  assert.equal(classifyIntent("how to use an empanada machine"), "informational");
+  assert.equal(classifyIntent("comprar laminadora de masa"), "transactional");
+  // RF-04: un término ambiguo se resuelve con la evidencia de la SERP.
+  assert.equal(classifyIntent("empanada machine"), "mixed");
+  assert.equal(classifyIntent("empanada machine", ["shopping"]), "commercial");
+  assert.equal(classifyIntent("empanada machine", ["people_also_ask"]), "informational");
+  // El modificador del término tiene precedencia sobre las señales de SERP.
+  assert.equal(classifyIntent("buy empanada machine", ["people_also_ask"]), "transactional");
+});
+
+test("every keyword belongs to exactly one cluster", () => {
+  const { result } = execute();
+  const owner = new Map();
+  for (const cluster of result.artifacts.keywordMap.clusters) {
+    for (const term of cluster.terms) {
+      assert.equal(owner.has(term), false, `"${term}" aparece en más de un cluster`);
+      owner.set(term, cluster.name);
+    }
+  }
+  assert.equal(owner.size, result.artifacts.keywordMap.candidates.length);
 });
 
 test("trace_id is preserved end to end", () => {

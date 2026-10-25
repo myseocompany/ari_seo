@@ -168,6 +168,27 @@ El agente estima el siguiente bloque de llamadas antes de ejecutarlo. Si el tech
 6. La misma fixture produce una salida normalizada determinista.
 7. Toda salida `failed` contiene al menos un error y todo `ready` tiene `errors: []`.
 
+## Trazabilidad de requisitos
+
+El gate de la etapa 4 de [`plan.md`](plan.md) exige que los criterios de aceptación estén automatizados. Esta matriz es la evidencia de ese gate y debe actualizarse con cada SPECT.
+
+| Requisito | Implementación | Test que lo verifica |
+| --- | --- | --- |
+| RF-01 Validación | `run.js`, `budget.js` | `invalid request fails before any provider call`; `budget exhaustion happens before fetch` |
+| RF-02 Investigación reproducible | `domain.js` (SourceLedger) | `selected keywords and competitors retain source evidence`; `pipeline output matches the approved golden brief` |
+| RF-03 Selección de keyword primaria | `domain.js` (componentes, score, cobertura) | `pipeline output matches the approved golden brief`; `missing metrics remain unknown instead of becoming zero` |
+| RF-04 Intención de búsqueda | `domain.js` (`classifyIntent`: término + features de SERP) | `intent combines term modifiers with observed SERP features` |
+| RF-05 Clustering | `domain.js` (vocabulario derivado de la solicitud) | `every keyword belongs to exactly one cluster` |
+| RF-06 Competidores | `domain.js`, `dataforseo-provider.js` (`normalizeSerps`) | `own domain is never emitted as a competitor`; `SERP normalization retains only organic results`; `insufficient optional evidence returns partial without invented competitors` |
+| RF-07 Recomendación de página | `domain.js` (`assembleBrief`) | `existing site query is marked update and linked internally`; `pipeline output matches the approved golden brief` |
+| RF-08 Estados | `domain.js`, `run.js` | `absence of valid SERPs returns failed with stable error`; `insufficient optional evidence returns partial without invented competitors`; `missing Search Console is carried as an explicit partial gap` |
+| RF-09 Idempotencia lógica | `run.js` (reloj e id inyectables), `normalize.js` (`stableId`) | `same fixtures produce the same normalized output`; `pipeline output matches the approved golden brief` |
+| RF-10 Presupuesto | `budget.js`, `dataforseo-client.js` | `budget exhaustion happens before fetch`; `cache avoids a second network call and budget reservation` |
+
+Criterios de aceptación de este SPECBOOT: el 1, 2, 4, 5, 6 y 7 están cubiertos por los tests de la tabla.
+
+**El criterio 3 no está cubierto:** describe la degradación ante un fallo de Apify, que no existe hasta SPECT-004. El patrón equivalente —una fuente opcional ausente que produce `partial` con el gap explícito— sí está verificado para Search Console en `missing Search Console is carried as an explicit partial gap`.
+
 ## Preguntas que no bloquean SPECBOOT
 
 - Lenguaje/runtime de la implementación.

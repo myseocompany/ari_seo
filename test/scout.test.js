@@ -71,6 +71,33 @@ test("own domain is never emitted as a competitor", () => {
   assert.equal(result.brief.competitor_urls.some((url) => new URL(url).hostname === "maquiempanadas.example"), false);
 });
 
+test("competitors exclude non-comparable platforms and deduplicate domains", () => {
+  const data = structuredClone(fixture);
+  data.serps[0].results.unshift(
+    { type: "organic", url: "https://www.amazon.com/example", title: "Marketplace" },
+    { type: "organic", url: "https://www.walmart.com/example", title: "Marketplace" },
+    { type: "organic", url: "https://youtube.com/watch?v=123", title: "Video" },
+    { type: "organic", url: "https://competitor-a.example/second-page?srsltid=tracking", title: "Duplicate domain" }
+  );
+  const { result } = execute(data);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "amazon.com"), false);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "youtube.com"), false);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "walmart.com"), false);
+  assert.equal(result.brief.competitor_urls.filter((url) => hostnameForTest(url) === "competitor-a.example").length, 1);
+  assert.ok(result.artifacts.competitorExclusions.some((item) => item.reason === "non-comparable-platform"));
+  assert.ok(result.artifacts.competitorExclusions.some((item) => item.reason === "duplicate-domain"));
+});
+
+function hostnameForTest(url) {
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
+test("synthetic briefs disclose material limits", () => {
+  const { result } = execute();
+  assert.ok(result.brief.assumptions.some((item) => item.includes("no valida competidores")));
+  assert.ok(result.brief.assumptions.some((item) => item.includes(".example")));
+});
+
 test("missing metrics remain unknown instead of becoming zero", () => {
   const { result } = execute();
   const candidate = result.artifacts.keywordMap.candidates.find((item) => item.term === "how to use an empanada machine");

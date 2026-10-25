@@ -46,7 +46,7 @@ El primer ciclo SDLC fue iniciado para ARI Scout. Su SPECBOOT, plan por gates y 
 
 Las features nuevas siguen el ciclo definido en [`SPECBOOT.md`](SPECBOOT.md). Los comandos versionados están en `.opencode/commands/`, las plantillas en `specs/_templates/` y los artefactos pasan de `specs/active/<slug>/` a `specs/done/<slug>/` al completar sus gates.
 
-La carpeta `specs/001-ari-scout/` conserva el primer ciclo histórico, anterior a la instalación del harness versionado.
+La carpeta `specs/001-ari-scout/` conserva el primer ciclo histórico, anterior a la instalación del harness versionado. Su normalización retrospectiva cerrada está en [`specs/done/ari-scout/`](specs/done/ari-scout/).
 
 ## Ejecutar ARI Scout offline
 
@@ -76,6 +76,17 @@ Para usar DataForSEO real, configura `.env` desde `.env.example`, revisa el pres
 ```bash
 npm run scout:dataforseo
 ```
+
+Para revisar el brief dorado en una vista legible:
+
+```bash
+npm run golden:review
+open docs/golden-brief-review.html
+```
+
+La vista incluye la dirección SEO, arquitectura de página, competidores, evidencia y una checklist que guarda el avance localmente en el navegador.
+
+Para propiedades de dominio de Search Console, configura el identificador exacto por separado de la URL pública del sitio, por ejemplo `GOOGLE_SEARCH_CONSOLE_SITE_URL=sc-domain:maquiempanadas.com`.
 
 El modo real toma el `ScoutRequest` de un archivo, así que puedes investigar cualquier tema sin tocar código:
 

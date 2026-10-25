@@ -1,0 +1,45 @@
+{
+  "source": "Google Search Console live response, sanitized",
+  "recorded_at": "2026-10-25T09:02:55.298Z",
+  "sanitization": "Queries, domain and metric values were replaced; response shape and field types are preserved.",
+  "response": {
+    "rows": [
+      {
+        "keys": ["recorded query 1", "https://maquiempanadas.example/"],
+        "clicks": 3,
+        "impressions": 100,
+        "ctr": 0.03,
+        "position": 8.5
+      },
+      {
+        "keys": ["recorded query 2", "https://maquiempanadas.example/en/"],
+        "clicks": 2,
+        "impressions": 80,
+        "ctr": 0.025,
+        "position": 11
+      },
+      {
+        "keys": ["recorded query 3", "https://maquiempanadas.example/example-article/"],
+        "clicks": 1,
+        "impressions": 20,
+        "ctr": 0.05,
+        "position": 15
+      },
+      {
+        "keys": ["recorded query 4", "https://maquiempanadas.example/"],
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "position": 19.25
+      },
+      {
+        "keys": ["recorded query 5", "https://maquiempanadas.example/example-product/"],
+        "clicks": 4,
+        "impressions": 160,
+        "ctr": 0.025,
+        "position": 6.75
+      }
+    ],
+    "responseAggregationType": "byPage"
+  }
+}

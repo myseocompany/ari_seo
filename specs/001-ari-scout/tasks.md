@@ -10,7 +10,7 @@ Las prioridades siguen el orden de ejecución del [`roadmap.md`](roadmap.md). Lo
 - [x] Definir modelos internos normalizados y puertos de proveedores.
 - [x] Implementar estados terminales y catálogo inicial de errores.
 - [x] Persistir el brief dorado y fijarlo con un test de regresión.
-- [ ] **Revisión humana del brief dorado.** Gate bloqueante abierto; ver [`plan.md`](plan.md#gates-incumplidos).
+- [x] **Revisión humana del brief dorado.** Aprobada 8/8 el 2026-10-25; evidencia en [`../done/ari-scout/05-human-review.md`](../done/ari-scout/05-human-review.md).
 
 ## P1 — camino feliz DataForSEO (SPECT-002)
 
@@ -28,8 +28,8 @@ Las prioridades siguen el orden de ejecución del [`roadmap.md`](roadmap.md). Lo
 - [x] Implementar inventario desde sitemap index/urlset.
 - [x] Detectar `update` y canibalización `merge`.
 - [x] Propagar gaps de señales propias al brief.
-- [ ] Ejecutar smoke test con una propiedad real autorizada.
-- [ ] Grabar fixtures saneadas de Search Console y de un sitemap real. Acoplado al punto anterior: el smoke las produce.
+- [x] Ejecutar smoke test con una propiedad real autorizada (`sc-domain:maquiempanadas.com`, 2026-10-25).
+- [x] Grabar fixture mínima saneada de Search Console desde una respuesta real; queries, dominio y métricas sustituidos conservando forma y tipos (`fixtures/search-console/search-analytics-live.json`). El sitemap real fue ejercitado en el smoke y su inventario permanece como artefacto local por volumen.
 
 ## P3 — enriquecimiento de competidores (SPECT-004)
 

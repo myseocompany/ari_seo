@@ -47,7 +47,7 @@ Orden recomendado:
 
 Gate: caso feliz completo con fixtures y sin red. **Cumplido.**
 
-Gate humano: revisión del brief dorado antes de iniciar adaptadores reales. **Abierto.** El artefacto a revisar es `fixtures/scout/en-us-golden.brief.json`.
+Gate humano: revisión del brief dorado. **Cumplido el 2026-10-25 (8/8)** con contraste posterior contra un candidato real; evidencia en [`../done/ari-scout/05-human-review.md`](../done/ari-scout/05-human-review.md).
 
 ### 3bis. Integración con proveedores de pago — `Implementado`
 
@@ -81,7 +81,7 @@ El gate 1 existe por una causa concreta: las fixtures escritas a mano de SPECT-0
 - integración opt-in con credenciales reales y presupuesto mínimo;
 - pruebas de fallos, rate limits, timeouts y redacción de secretos.
 
-Gate: criterios de aceptación de `spec.md` automatizados y trazables. La evidencia es la matriz de [Trazabilidad de requisitos](spec.md#trazabilidad-de-requisitos). Abierto: el criterio 3 depende de Apify (SPECT-004) y el smoke real de Search Console sigue pendiente.
+Gate: criterios de aceptación de `spec.md` automatizados y trazables. La evidencia es la matriz de [Trazabilidad de requisitos](spec.md#trazabilidad-de-requisitos). El smoke real de Search Console fue completado el 2026-10-25; el criterio 3 continúa dependiendo de la futura extracción de competidores (SPECT-004).
 
 ### 5. Release piloto — `Pendiente`
 
@@ -98,8 +98,8 @@ Registro explícito para que un incumplimiento no se pierda entre documentos.
 
 | Gate | Etapa | Estado | Consecuencia observada |
 | --- | --- | --- | --- |
-| Revisión humana del brief dorado | 3 | Abierto | SPECT-002 y SPECT-003 se implementaron encima sin validar la calidad del brief base, y se ejecutaron llamadas pagadas. |
-| Fixtures grabadas y saneadas | 3bis | Cumplido en SPECT-002 desde 2026-10-24; abierto en SPECT-003 | Un suite en verde contra una forma de respuesta que la API no devuelve. |
+| Revisión humana del brief dorado | 3 | Cumplido el 2026-10-25 | Aprobación 8/8 tras contrastar con evidencia real y curar competidores. |
+| Fixtures grabadas y saneadas | 3bis | Cumplido | DataForSEO y Search Console tienen grabaciones saneadas; el sitemap real fue ejercitado sin versionar su inventario completo por volumen. |
 | Criterios de `spec.md` trazables | 4 | Cumplido desde 2026-10-24 | Antes no existía forma de demostrar qué RF estaba cubierto; ningún SPECT referenciaba un RF. |
 
 ## Riesgos principales

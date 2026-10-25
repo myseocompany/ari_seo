@@ -12,3 +12,4 @@ Toda feature **no trivial** sigue el ciclo SPECBOOT antes de llegar a `main`. Le
 - Si cambia un contrato JSON, actualiza su schema, consumidores, fixtures y pruebas en la misma entrega.
 - No edites manualmente `package-lock.json`; deja que npm lo mantenga al modificar dependencias.
 - No hagas push, abras PR ni despliegues sin autorización explícita.
+- Toda superficie visual nueva sigue `DESIGN_SYSTEM.md`; si se implementa dentro de AriCRM, reutiliza primero sus componentes canónicos.

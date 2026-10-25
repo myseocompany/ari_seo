@@ -4,14 +4,15 @@ Los estados siguen el vocabulario definido en [`plan.md`](plan.md#vocabulario-de
 
 | SPECT | Incremento | Estado | Qué falta |
 | --- | --- | --- | --- |
-| 001 | Pipeline offline, evidencia, scoring y contratos | `Implementado` | Revisión humana del brief dorado. |
+| 001 | Pipeline offline, evidencia, scoring y contratos | `Completado` | — |
 | 002 | DataForSEO keywords + SERP, presupuesto, caché y retry | `Implementado` | Logs y métricas estructurados con redacción de secretos. |
-| 003 | Search Console e inventario/canibalización del sitio | `Implementado` | Smoke real con propiedad autorizada y las fixtures grabadas que produciría. |
+| 003 | Search Console e inventario/canibalización del sitio | `Completado` | — |
 | 004 | Enriquecimiento de competidores: HTTP directo → Apify | `Pendiente` | Todo. Estrategia decidida en [ADR 0002](../../docs/adr/0002-estrategia-de-extraccion.md). |
 | 005 | Síntesis LLM controlada, prompts versionados y evals | `Pendiente` | Todo. |
 | 006 | Operación, observabilidad, piloto y conexión con ARI Core | `Pendiente` | Parcial: presupuesto, caché y CI ya existen. |
+| 007 | Integración multi-tenant con AriCRM | `Pendiente` | Depende de la API y operación estable de SPECT-006. Gobernado por [ADR 0004](../../docs/adr/0004-plano-de-control-y-plano-de-ejecucion.md): corte vertical con seam CLI primero, contrato completo después. |
 
-Después de SPECT-003 quedan tres incrementos previstos. El número puede cambiar si el piloto separa una necesidad operacional material.
+Después de SPECT-003 quedan cuatro incrementos previstos. SPECT-007 mantiene la integración comercial y multi-tenant fuera del alcance operativo de SPECT-006.
 
 ## Corte de prueba actual
 

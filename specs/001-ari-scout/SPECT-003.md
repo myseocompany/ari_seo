@@ -2,7 +2,7 @@
 
 ## Estado
 
-Implementado y verificado offline el 2026-10-24. El smoke combinado sin credenciales propias se documenta en [`SPECT-003-smoke.md`](SPECT-003-smoke.md); queda pendiente probar una propiedad real autorizada.
+Completado. Verificado offline el 2026-10-24 y contra la propiedad autorizada `sc-domain:maquiempanadas.com` el 2026-10-25. La fixture mínima saneada está en `fixtures/search-console/search-analytics-live.json`.
 
 ## Resultado
 
@@ -97,7 +97,7 @@ Si `search_console_site_url` no está presente, se usa `site_url`. Search Consol
 - [x] gaps de señales propias propagados al brief como supuestos explícitos;
 - [x] suite por defecto sin red ni credenciales;
 - [x] criterios de aceptación 1 a 10 automatizados;
-- [ ] **fixtures grabadas de Search Console y de un sitemap real.** Los tests actuales usan envolturas escritas a mano, el mismo patrón que falló en SPECT-002. No hay grabaciones disponibles porque todavía no se ejecutó contra una propiedad autorizada;
-- [ ] **smoke test con una propiedad real autorizada** (abierto, P2 en [`tasks.md`](tasks.md)).
+- [x] fixture mínima de Search Console grabada desde una respuesta real y saneada preservando forma y tipos; el sitemap real fue ejercitado sin versionar el inventario completo por volumen;
+- [x] smoke test con la propiedad autorizada `sc-domain:maquiempanadas.com`, con resultado `ready` y dentro del presupuesto configurado.
 
-Los dos puntos abiertos están acoplados: el smoke test es lo que producirá las grabaciones que faltan.
+La evidencia de cierre y la aprobación humana están archivadas en [`../done/ari-scout/`](../done/ari-scout/).

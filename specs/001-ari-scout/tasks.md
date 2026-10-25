@@ -54,6 +54,18 @@ Estrategia de dos niveles decidida en [ADR 0002](../../docs/adr/0002-estrategia-
 - [ ] Permitir pasar el topic por parámetro al corte offline, hoy limitado al request embebido en la fixture.
 - [ ] Ejecutar piloto y documentar resultados.
 
+## P5 — integración multi-tenant con AriCRM (SPECT-007)
+
+- [ ] Versionar contratos de proyecto, ejecución, revisión y webhook.
+- [ ] Añadir `tenant_id`, `project_id`, `run_id` e idempotencia por tenant.
+- [ ] Implementar persistencia, worker asíncrono y estados del workflow.
+- [ ] Aislar credenciales, caché, artefactos y consumo por tenant.
+- [ ] Implementar cuotas y ledger de costos por tenant.
+- [ ] Firmar y deduplicar webhooks hacia AriCRM.
+- [ ] Construir en AriCRM la UI mínima de proyecto, ejecución y aprobación.
+- [ ] Probar aislamiento cruzado y contratos entre ambos repos.
+- [ ] Ejecutar rollout por allowlist con Maquiempanadas.
+
 ## Deuda conocida
 
 - [ ] El outline de `recommended_page` sigue siendo una plantilla por idioma, no derivada de los hallazgos. `spec.md` exige derivación para `ready`; SPECT-001 autoriza plantillas en v0. El conflicto está sin resolver y requiere decisión de producto.

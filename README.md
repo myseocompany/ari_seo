@@ -48,6 +48,8 @@ Las features nuevas siguen el ciclo definido en [`SPECBOOT.md`](SPECBOOT.md). Lo
 
 La carpeta `specs/001-ari-scout/` conserva el primer ciclo histórico, anterior a la instalación del harness versionado. Su normalización retrospectiva cerrada está en [`specs/done/ari-scout/`](specs/done/ari-scout/).
 
+Las superficies visuales siguen [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md), derivado del sistema Ari de AriCRM y adaptado al flujo de investigación y revisión SEO.
+
 ## Ejecutar ARI Scout offline
 
 El primer corte vertical usa fixtures sintéticas y no consume APIs:

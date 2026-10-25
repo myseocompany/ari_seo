@@ -106,6 +106,6 @@ Los estimados protegen el techo antes de llamar. El costo reportado por DataForS
 
 ## Incumplimiento de gate
 
-Este incremento se implementó y se ejecutó contra la API real el 2026-10-24, el mismo día que SPECT-001, **sin que se completara la revisión humana del brief dorado** que SPECT-001 declaraba bloqueante para iniciar adaptadores reales. El gate sigue abierto; ver [`SPECT-001.md`](SPECT-001.md) y la nota de la etapa 3bis en [`plan.md`](plan.md).
+Este incremento se implementó y se ejecutó contra la API real el 2026-10-24, el mismo día que SPECT-001, **antes de completar la revisión humana del brief dorado** que SPECT-001 declaraba bloqueante. La desviación quedó registrada y el gate fue cerrado retrospectivamente el 2026-10-25; ver [`../done/ari-scout/05-human-review.md`](../done/ari-scout/05-human-review.md).
 
 Las fixtures de este SPECT fueron inicialmente escritas a mano, incumpliendo el requisito de `spec.md` de usar grabaciones saneadas. Esa decisión causó el fallo documentado en el smoke test: el stub asumía que Organic Live Advanced acepta varias tasks por request y el suite pasaba en verde contra una API imaginaria. Corregido el 2026-10-24 con grabaciones reales.

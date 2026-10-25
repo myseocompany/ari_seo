@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import path from "node:path";
 import { validateScoutRequest, validationErrors } from "./contracts.js";
 import { createDataForSeoProvider } from "./dataforseo-config.js";
 import { sanitizeProviderError, ScoutProviderError } from "./errors.js";
@@ -8,6 +9,7 @@ import { SearchConsoleClient } from "./search-console-client.js";
 import { SitemapInventoryProvider } from "./sitemap-provider.js";
 
 const requestPath = process.argv[2];
+const outputPath = process.argv[3];
 if (!requestPath) {
   process.stderr.write("Usage: node --env-file=.env src/scout/live-cli.js <request.json>\n");
   process.exit(2);
@@ -30,7 +32,11 @@ try {
 
   if (process.env.GOOGLE_SEARCH_CONSOLE_ACCESS_TOKEN) {
     try {
-      const gsc = await new SearchConsoleClient({ accessToken: process.env.GOOGLE_SEARCH_CONSOLE_ACCESS_TOKEN }).collect(request);
+      const gscRequest = {
+        ...request,
+        search_console_site_url: process.env.GOOGLE_SEARCH_CONSOLE_SITE_URL ?? request.search_console_site_url
+      };
+      const gsc = await new SearchConsoleClient({ accessToken: process.env.GOOGLE_SEARCH_CONSOLE_ACCESS_TOKEN }).collect(gscRequest);
       siteSignals = gsc.signals;
       if (gsc.gap) gaps.push(gsc.gap);
     } catch (error) {
@@ -53,7 +59,14 @@ try {
   }
 
   const result = runScoutWithSignals(request, { ...external, siteSignals, siteInventory, gaps });
-  process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+  const serialized = `${JSON.stringify(result, null, 2)}\n`;
+  if (outputPath) {
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, serialized, { mode: 0o600 });
+    process.stdout.write(`${JSON.stringify({ status: result.status, output: outputPath, usage: result.artifacts?.usage ?? null }, null, 2)}\n`);
+  } else {
+    process.stdout.write(serialized);
+  }
   process.exitCode = result.status === "failed" ? 1 : 0;
 } catch (error) {
   const safe = sanitizeProviderError(error).toContractError();

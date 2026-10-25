@@ -10,6 +10,7 @@ import { runScout, runScoutWithSignals } from "../src/scout/run.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const fixture = JSON.parse(fs.readFileSync(path.join(root, "fixtures/scout/en-us-golden.json"), "utf8"));
+const searchConsoleRecording = JSON.parse(fs.readFileSync(path.join(root, "fixtures/search-console/search-analytics-live.json"), "utf8"));
 const fixed = { now: () => "2026-10-24T12:00:00.000Z", id: () => "33333333-3333-4333-8333-333333333333" };
 
 function jsonResponse(data, status = 200) {
@@ -22,29 +23,25 @@ function xmlResponse(xml, status = 200) {
 
 test("Search Console paginates and normalizes query/page rows", async () => {
   const requests = [];
-  const pages = [
-    { rows: [
-      { keys: ["CRM Para Pymes", "https://example.com/crm"], clicks: 3, impressions: 100, ctr: 0.03, position: 8.5 },
-      { keys: ["CRM Para Pymes", "https://example.com/crm-pymes"], clicks: 2, impressions: 80, ctr: 0.025, position: 11 }
-    ] },
-    { rows: [{ keys: ["software crm", "https://example.com/software"], clicks: 1, impressions: 20, ctr: 0.05, position: 15 }] }
-  ];
+  const rows = searchConsoleRecording.response.rows;
+  const pages = [{ rows: rows.slice(0, 2) }, { rows: rows.slice(2, 3) }];
   const client = new SearchConsoleClient({
     accessToken: "private-token",
     pageSize: 2,
     maxRetries: 0,
     now: () => new Date("2026-10-24T12:00:00Z"),
-    fetchImpl: async (_url, options) => {
-      requests.push({ headers: options.headers, body: JSON.parse(options.body) });
+    fetchImpl: async (url, options) => {
+      requests.push({ url, headers: options.headers, body: JSON.parse(options.body) });
       return jsonResponse(pages.shift());
     }
   });
-  const result = await client.collect({ site_url: "https://example.com", limits: { max_gsc_rows: 5 } });
+  const result = await client.collect({ site_url: "https://example.com", search_console_site_url: "sc-domain:example.com", limits: { max_gsc_rows: 5 } });
   assert.equal(requests.length, 2);
+  assert.match(requests[0].url, /sc-domain%3Aexample\.com/);
   assert.equal(requests[0].body.startDate, "2026-09-24");
   assert.equal(requests[0].body.endDate, "2026-10-21");
   assert.equal(result.signals.length, 3);
-  assert.equal(result.signals[0].term, "crm para pymes");
+  assert.equal(result.signals[0].term, "recorded query 1");
   assert.equal(JSON.stringify(result).includes("private-token"), false);
 });
 

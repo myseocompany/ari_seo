@@ -31,6 +31,36 @@ const SERP_INTENT = [
   [["featured_snippet", "people_also_ask", "knowledge_graph"], "informational"]
 ];
 
+const NON_COMPARABLE_COMPETITOR_HOSTS = new Set([
+  "amazon.com",
+  "ebay.com",
+  "facebook.com",
+  "instagram.com",
+  "linkedin.com",
+  "pinterest.com",
+  "reddit.com",
+  "tiktok.com",
+  "target.com",
+  "walmart.com",
+  "x.com",
+  "youtube.com"
+]);
+
+function competitorExclusion(url, ownHost) {
+  const host = hostname(url);
+  if (ownHost && host === ownHost) return "own-domain";
+  if ([...NON_COMPARABLE_COMPETITOR_HOSTS].some((domain) => host === domain || host.endsWith(`.${domain}`))) return "non-comparable-platform";
+  return null;
+}
+
+function cleanCompetitorUrl(value) {
+  const url = new URL(value);
+  for (const key of [...url.searchParams.keys()]) {
+    if (key.startsWith("utm_") || key === "srsltid" || key === "gclid" || key === "fbclid") url.searchParams.delete(key);
+  }
+  return url.toString();
+}
+
 // RF-04: la clasificación combina modificadores del término con características
 // de la SERP. Un término ambiguo se resuelve con la evidencia observada, no con
 // una inferencia sobre el término aislado.
@@ -129,14 +159,18 @@ export function buildResearchArtifacts(request, siteSignals, keywordSignals, ser
   ];
 
   const competitors = [];
-  const seen = new Set();
+  const competitorExclusions = [];
+  const seenHosts = new Set();
   for (const candidate of candidates) {
     for (const result of candidate.serp?.results ?? []) {
-      if (ownHost && hostname(result.url) === ownHost) continue;
-      if (!seen.has(result.url)) {
-        seen.add(result.url);
-        competitors.push(result.url);
+      const host = hostname(result.url);
+      const exclusion = competitorExclusion(result.url, ownHost) ?? (seenHosts.has(host) ? "duplicate-domain" : null);
+      if (exclusion) {
+        competitorExclusions.push({ url: result.url, reason: exclusion });
+        continue;
       }
+      seenHosts.add(host);
+      competitors.push(cleanCompetitorUrl(result.url));
     }
   }
 
@@ -144,6 +178,7 @@ export function buildResearchArtifacts(request, siteSignals, keywordSignals, ser
     sourceLedger,
     keywordMap: { candidates, clusters: [...clusters].map(([name, terms]) => ({ name, terms })) },
     competitors,
+    competitorExclusions,
     siteInventory,
     gaps
   };
@@ -201,14 +236,38 @@ export function assembleBrief(request, artifacts, metadata) {
     },
     competitor_urls: artifacts.competitors.slice(0, 10),
     evidence: artifacts.sourceLedger.map(toPublicEvidence),
-    assumptions: [
-      artifacts.sourceLedger.some((item) => item.provider === "fixture")
-        ? "Resultado generado exclusivamente con fixtures sintéticas de SPECT-001."
-        : "Las métricas externas reflejan el momento observado y pueden cambiar.",
-      ...artifacts.gaps
-    ],
+    assumptions: briefAssumptions(request, artifacts),
     errors: status === "partial" ? [{ code: "INSUFFICIENT_EVIDENCE", message: "The brief is usable but did not reach the ready evidence threshold.", retryable: true }] : []
   };
+}
+
+function briefAssumptions(request, artifacts) {
+  if (artifacts.sourceLedger.some((item) => item.provider === "fixture")) {
+    return [
+      "Resultado generado exclusivamente con fixtures sintéticas de SPECT-001; no valida competidores, enlaces ni demanda reales.",
+      "Las URLs .example son marcadores de prueba y no deben trasladarse a producción.",
+      ...artifacts.gaps
+    ];
+  }
+
+  const assumptions = [
+    "Las métricas externas son una fotografía del momento observado y pueden cambiar.",
+    "Los competidores son candidatos de resultados orgánicos, no una validación comercial ni un análisis de su contenido.",
+    "Se excluyen el dominio propio, plataformas sociales, foros, video y marketplaces generalistas; se conserva como máximo una URL por dominio competidor."
+  ];
+  if (artifacts.sourceLedger.some((item) => item.provider === "google-search-console")) {
+    assumptions.push("Search Console usa una ventana finalizada de 28 días con tres días de retraso y está limitada por max_gsc_rows.");
+  }
+  if (artifacts.siteInventory.length) {
+    assumptions.push("El sitemap puede incluir URLs antiguas, utilitarias o de otros idiomas; aparecer en él no demuestra relevancia editorial.");
+  }
+  if ((request.limits?.max_competitor_pages ?? 0) === 0) {
+    assumptions.push("No se extrajo ni evaluó el contenido de páginas competidoras porque max_competitor_pages es 0.");
+  }
+  if (artifacts.usage) {
+    assumptions.push(`Presupuesto de proveedor: límite USD ${artifacts.usage.limit_usd}; costo reportado USD ${artifacts.usage.reported_usd}.`);
+  }
+  return [...assumptions, ...artifacts.gaps];
 }
 
 function toPublicEvidence(item) {
@@ -228,7 +287,7 @@ function ledgerItem(item, context = {}) {
     ...(item.task_id ? { task_id: item.task_id } : {}),
     note: synthetic
       ? `Synthetic fixture${context.keyword ? ` for ${context.keyword}` : ""}; not a real observation.`
-      : `DataForSEO ${operation}${context.keyword ? ` for ${context.keyword}` : ""}.`
+      : `${provider} ${operation}${context.keyword ? ` for ${context.keyword}` : ""}.`
   };
 }
 

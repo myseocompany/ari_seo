@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { validateScoutRequest, validateSeoBrief } from "../src/scout/contracts.js";
+import { classifyIntent } from "../src/scout/domain.js";
 import { FixtureResearchProvider } from "../src/scout/fixture-provider.js";
 import { runScout } from "../src/scout/run.js";
 
@@ -70,6 +71,33 @@ test("own domain is never emitted as a competitor", () => {
   assert.equal(result.brief.competitor_urls.some((url) => new URL(url).hostname === "maquiempanadas.example"), false);
 });
 
+test("competitors exclude non-comparable platforms and deduplicate domains", () => {
+  const data = structuredClone(fixture);
+  data.serps[0].results.unshift(
+    { type: "organic", url: "https://www.amazon.com/example", title: "Marketplace" },
+    { type: "organic", url: "https://www.walmart.com/example", title: "Marketplace" },
+    { type: "organic", url: "https://youtube.com/watch?v=123", title: "Video" },
+    { type: "organic", url: "https://competitor-a.example/second-page?srsltid=tracking", title: "Duplicate domain" }
+  );
+  const { result } = execute(data);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "amazon.com"), false);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "youtube.com"), false);
+  assert.equal(result.brief.competitor_urls.some((url) => hostnameForTest(url) === "walmart.com"), false);
+  assert.equal(result.brief.competitor_urls.filter((url) => hostnameForTest(url) === "competitor-a.example").length, 1);
+  assert.ok(result.artifacts.competitorExclusions.some((item) => item.reason === "non-comparable-platform"));
+  assert.ok(result.artifacts.competitorExclusions.some((item) => item.reason === "duplicate-domain"));
+});
+
+function hostnameForTest(url) {
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
+test("synthetic briefs disclose material limits", () => {
+  const { result } = execute();
+  assert.ok(result.brief.assumptions.some((item) => item.includes("no valida competidores")));
+  assert.ok(result.brief.assumptions.some((item) => item.includes(".example")));
+});
+
 test("missing metrics remain unknown instead of becoming zero", () => {
   const { result } = execute();
   const candidate = result.artifacts.keywordMap.candidates.find((item) => item.term === "how to use an empanada machine");
@@ -94,6 +122,32 @@ test("insufficient optional evidence returns partial without invented competitor
   assert.equal(result.status, "partial");
   assert.ok(result.brief.errors.length > 0);
   assert.ok(result.brief.competitor_urls.every((url) => data.serps[0].results.some((item) => item.url === url)));
+});
+
+test("intent combines term modifiers with observed SERP features", () => {
+  // Un modificador explícito del término decide por sí solo.
+  assert.equal(classifyIntent("buy empanada machine"), "transactional");
+  assert.equal(classifyIntent("best empanada machine"), "commercial");
+  assert.equal(classifyIntent("how to use an empanada machine"), "informational");
+  assert.equal(classifyIntent("comprar laminadora de masa"), "transactional");
+  // RF-04: un término ambiguo se resuelve con la evidencia de la SERP.
+  assert.equal(classifyIntent("empanada machine"), "mixed");
+  assert.equal(classifyIntent("empanada machine", ["shopping"]), "commercial");
+  assert.equal(classifyIntent("empanada machine", ["people_also_ask"]), "informational");
+  // El modificador del término tiene precedencia sobre las señales de SERP.
+  assert.equal(classifyIntent("buy empanada machine", ["people_also_ask"]), "transactional");
+});
+
+test("every keyword belongs to exactly one cluster", () => {
+  const { result } = execute();
+  const owner = new Map();
+  for (const cluster of result.artifacts.keywordMap.clusters) {
+    for (const term of cluster.terms) {
+      assert.equal(owner.has(term), false, `"${term}" aparece en más de un cluster`);
+      owner.set(term, cluster.name);
+    }
+  }
+  assert.equal(owner.size, result.artifacts.keywordMap.candidates.length);
 });
 
 test("trace_id is preserved end to end", () => {

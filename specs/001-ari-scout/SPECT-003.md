@@ -2,7 +2,7 @@
 
 ## Estado
 
-Implementado y verificado offline el 2026-10-24. El smoke combinado sin credenciales propias se documenta en [`SPECT-003-smoke.md`](SPECT-003-smoke.md); queda pendiente probar una propiedad real autorizada.
+Completado. Verificado offline el 2026-10-24 y contra la propiedad autorizada `sc-domain:maquiempanadas.com` el 2026-10-25. La fixture mínima saneada está en `fixtures/search-console/search-analytics-live.json`.
 
 ## Resultado
 
@@ -72,9 +72,32 @@ Si `search_console_site_url` no está presente, se usa `site_url`. Search Consol
 9. El suite normal no usa red ni credenciales.
 10. El brief combinado continúa validando contra `SEOBrief`.
 
-## Fuera de alcance
+## Alcance
+
+### Incluido
+
+- cliente de Search Console con paginación, ventana estable y token inyectado;
+- inventario desde `urlset` y `sitemapindex`, con límites de tamaño y sin ciclos;
+- decisión entre `build`, `update`, `merge`, `watch` y `reject`;
+- propagación de gaps de señales propias al brief;
+- enlaces internos sugeridos derivados únicamente de URLs observadas.
+
+### Fuera de alcance
 
 - Inspección individual de indexación.
 - Google Analytics.
 - Crawling/render de todas las páginas.
 - Corrección automática de canibalización.
+
+## Definition of Done
+
+- [x] cliente de Search Console con paginación y ventana estable;
+- [x] inventario desde sitemap index y urlset, acotado y sin ciclos;
+- [x] detección de `update` y de canibalización `merge`;
+- [x] gaps de señales propias propagados al brief como supuestos explícitos;
+- [x] suite por defecto sin red ni credenciales;
+- [x] criterios de aceptación 1 a 10 automatizados;
+- [x] fixture mínima de Search Console grabada desde una respuesta real y saneada preservando forma y tipos; el sitemap real fue ejercitado sin versionar el inventario completo por volumen;
+- [x] smoke test con la propiedad autorizada `sc-domain:maquiempanadas.com`, con resultado `ready` y dentro del presupuesto configurado.
+
+La evidencia de cierre y la aprobación humana están archivadas en [`../done/ari-scout/`](../done/ari-scout/).

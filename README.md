@@ -40,7 +40,15 @@ contracts/
 
 Los archivos de `agents/` son definiciones, no agentes ejecutables. Los esquemas de `contracts/` describen las fronteras futuras del sistema y no implican transporte, persistencia ni protocolo de mensajería.
 
-El primer ciclo SDLC fue iniciado para ARI Scout. Su SPECBOOT, plan por gates y backlog están en [`specs/001-ari-scout/`](specs/001-ari-scout/).
+El primer ciclo SDLC fue iniciado para ARI Scout. Su SPECBOOT, plan por gates y backlog están en [`specs/001-ari-scout/`](specs/001-ari-scout/). Los gates cumplidos e incumplidos se registran en [`plan.md`](specs/001-ari-scout/plan.md#gates-incumplidos); hoy sigue abierta la revisión humana del brief dorado.
+
+## Desarrollo con SPECBOOT
+
+Las features nuevas siguen el ciclo definido en [`SPECBOOT.md`](SPECBOOT.md). Los comandos versionados están en `.opencode/commands/`, las plantillas en `specs/_templates/` y los artefactos pasan de `specs/active/<slug>/` a `specs/done/<slug>/` al completar sus gates.
+
+La carpeta `specs/001-ari-scout/` conserva el primer ciclo histórico, anterior a la instalación del harness versionado. Su normalización retrospectiva cerrada está en [`specs/done/ari-scout/`](specs/done/ari-scout/).
+
+Las superficies visuales siguen [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md), derivado del sistema Ari de AriCRM y adaptado al flujo de investigación y revisión SEO.
 
 ## Ejecutar ARI Scout offline
 
@@ -52,9 +60,41 @@ npm test
 npm run scout
 ```
 
+El corte offline se ejercita sobre el cluster `empanada machine` en `en-US`. Dos artefactos lo gobiernan:
+
+| Artefacto | Qué es |
+| --- | --- |
+| `fixtures/scout/en-us-golden.json` | **Fixture dorada**: la entrada, con las señales sintéticas de sitio, keywords y SERP. |
+| `fixtures/scout/en-us-golden.brief.json` | **Brief dorado**: la salida aprobada, fijada por un test de regresión. |
+
+Si un cambio de normalización, scoring, clustering o ensamblaje altera la salida, el suite falla. Para aprobar una desviación intencional:
+
+```bash
+npm run golden:update   # regenera el brief dorado; revisa el diff antes de commitear
+```
+
 Para usar DataForSEO real, configura `.env` desde `.env.example`, revisa el presupuesto de `examples/scout-request.json` y ejecuta:
 
 ```bash
 npm run scout:dataforseo
 ```
+
+Para revisar el brief dorado en una vista legible:
+
+```bash
+npm run golden:review
+open docs/golden-brief-review.html
+```
+
+La vista incluye la dirección SEO, arquitectura de página, competidores, evidencia y una checklist que guarda el avance localmente en el navegador.
+
+Para propiedades de dominio de Search Console, configura el identificador exacto por separado de la URL pública del sitio, por ejemplo `GOOGLE_SEARCH_CONSOLE_SITE_URL=sc-domain:maquiempanadas.com`.
+
+El modo real toma el `ScoutRequest` de un archivo, así que puedes investigar cualquier tema sin tocar código:
+
+```bash
+node --env-file=.env src/scout/dataforseo-cli.js mi-request.json
+```
+
+Las fixtures de proveedor en `fixtures/dataforseo/` son grabaciones saneadas de respuestas reales, producidas por `scripts/record-dataforseo-fixtures.mjs`. No escribir envolturas de proveedor a mano: fijan la forma de la respuesta y una forma inventada ya produjo un suite en verde contra una API imaginaria.
 

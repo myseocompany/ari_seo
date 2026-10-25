@@ -11,6 +11,7 @@
     "scout:dataforseo": "node --env-file=.env src/scout/dataforseo-cli.js examples/scout-request.json",
     "scout:live": "node --env-file=.env src/scout/live-cli.js examples/scout-request.json",
     "golden:update": "node scripts/update-golden-brief.mjs",
+    "golden:review": "node scripts/generate-golden-review.mjs",
     "test": "node --test"
   },
   "dependencies": {

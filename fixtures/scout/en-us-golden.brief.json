@@ -62,8 +62,8 @@
     "https://competitor-h.example/listings",
     "https://competitor-e.example/best-empanada-machines",
     "https://competitor-f.example/buying-guide",
-    "https://competitor-b.example/empanada-makers",
-    "https://competitor-i.example/small-batch"
+    "https://competitor-i.example/small-batch",
+    "https://competitor-j.example/videos"
   ],
   "evidence": [
     {
@@ -224,7 +224,8 @@
     }
   ],
   "assumptions": [
-    "Resultado generado exclusivamente con fixtures sintéticas de SPECT-001."
+    "Resultado generado exclusivamente con fixtures sintéticas de SPECT-001; no valida competidores, enlaces ni demanda reales.",
+    "Las URLs .example son marcadores de prueba y no deben trasladarse a producción."
   ],
   "errors": []
 }

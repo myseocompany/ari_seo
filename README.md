@@ -42,6 +42,12 @@ Los archivos de `agents/` son definiciones, no agentes ejecutables. Los esquemas
 
 El primer ciclo SDLC fue iniciado para ARI Scout. Su SPECBOOT, plan por gates y backlog están en [`specs/001-ari-scout/`](specs/001-ari-scout/). Los gates cumplidos e incumplidos se registran en [`plan.md`](specs/001-ari-scout/plan.md#gates-incumplidos); hoy sigue abierta la revisión humana del brief dorado.
 
+## Desarrollo con SPECBOOT
+
+Las features nuevas siguen el ciclo definido en [`SPECBOOT.md`](SPECBOOT.md). Los comandos versionados están en `.opencode/commands/`, las plantillas en `specs/_templates/` y los artefactos pasan de `specs/active/<slug>/` a `specs/done/<slug>/` al completar sus gates.
+
+La carpeta `specs/001-ari-scout/` conserva el primer ciclo histórico, anterior a la instalación del harness versionado.
+
 ## Ejecutar ARI Scout offline
 
 El primer corte vertical usa fixtures sintéticas y no consume APIs:
